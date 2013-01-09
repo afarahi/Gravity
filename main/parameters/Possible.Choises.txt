@@ -1,0 +1,7 @@
+Possible Choises:
+
+Potential:
+Massive_Scalar , Higgs , String1 , String2
+
+Initial_Condition_Method:
+Eigenfunction_modes_non_normalized , Gaussian , Input_File

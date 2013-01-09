@@ -1,0 +1,20 @@
+<data>
+  <Geometry_properties>
+    <Geometry_type>AdS4</Geometry_type>
+    <Cosmological_constant>1.0</Cosmological_constant>
+    <Solver_type>RK4</Solver_type>
+  </Geometry_properties>
+  <Field_properties>
+    <Potential>Massive_Scalar</Potential>
+  </Field_properties>
+  <Initial_Condition>
+    <Initial_Condition_Method>Gaussian</Initial_Condition_Method>
+  </Initial_Condition>
+  <Grid_size>1000</Grid_size>
+  <Horizon_condition>
+    <A_min>0.01</A_min>
+  </Horizon_condition>
+  <Max_number_of_loops>
+    <i_max>200000</i_max>
+  </Max_number_of_loops>
+</data>
