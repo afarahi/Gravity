@@ -36,9 +36,24 @@ def Report_title():
 \usepackage{color}      % use if color is used in text
 \usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
 \usepackage{natbib}     % Used for Bibliography
+\usepackage{ifthen}
 
-\title{Gravity Report}
-\author{\copyright 2013 by Arya Farahi}
+% Names
+\def\grv{{\sc Gravity}}
+
+% Physical constants.
+\def\G{{\rm G}}
+\def\clight{{\rm c}}
+\def\d{{\rm d}}
+\def\e{{\rm e}}
+
+% AdS
+\newcounter{AdSDone}
+\setcounter{AdSDone}{0}
+\def\AdS{\ifthenelse{\equal{\arabic{AdSDone}}{0}}{anti de Sitter (AdS)\setcounter{AdSDone}{1}}{AdS}}
+
+\title{\grv\ Report}
+\author{\copyright 2013 by Arya Farahi\thanks{E-mail: {\tt aryaf@umich.edu}}}
 \date{\today}
 
 \begin{document}
@@ -57,7 +72,7 @@ def Report_introduction():
     S = r'''
 \section{Introduction}
 
-Gravity is an open source code for studying the Gravitational collapse of viriouse fields in AdS spaces. It is developed in 2012, and 2013 by Arya Farahi for gravitational collapse project under guidance of Leo Pando Zayas at University of Michigan - Ann Arbor. '''
+\grv\ is an open source code for studying the gravitational collapse of variouse fields in AdS spaces. It is developed in 2012, and 2013 by Arya Farahi for gravitational collapse project under guidance of Leo Pando Zayas at University of Michigan - Ann Arbor. '''
     return S
 
 
@@ -96,7 +111,7 @@ Graphs \ref{fig:R-Pi}, \ref{fig:R-phi}, and \ref{fig:R-Phi} show results of $\Pi
 
 \subsection{Black hole formation}
 
-One of the aim of ... is to study the black hole fomration of different fields in AdS geometry. Once the black hole forms the field stops its evolution. It is suggested that all fields create a black hole at sometimes during their evolution, and it is the universal feature of all fields in AdS. The time of fomation of black hole depends on the amplititude and shape of initial wave, the geometry of space, potential, and the field choice. Because it is not possible to run the code for ever an end condition implimented in the code to stop the evolution of field after some number of iteration. In this run the number of iteration is defined, $i_{\max}  = ''' + str(Gravity_object.Max_interation) + r'''$. \\
+One of the aim of \grv\ is to study the black hole fomration of different fields in \AdS\ geometry. Once the black hole forms the field stops its evolution. It is suggested that all fields forms a black hole at sometimes during their evolution, and it is the universal feature of all fields in \AdS\ . The time of fomation of black hole depends on the amplititude and shape of initial wave, the geometry of space, potential, and the field choice. Because it is not possible to run the code for ever an end condition implimented in the code to stop the evolution of field after some number of iteration. In this run the number of iteration is defined, $i_{\max}  = ''' + str(Gravity_object.Max_interation) + r'''$. \\
 For black hole formation the code checks the value of $A$ at each point, at each time. Theoretically once $A = 0$ it means that the black hole fomed so the condition $A_{\min}$ is defined to check whether the black hole is formed or not. One should choose something close to zero, but independently, by changing the $A_{\min}$ need to make sure that the condition do not affect the result. In this run $A_{\min} = ''' + str(Gravity_object.A_min) + r'''$ . \\
 
 '''  + S1
@@ -140,7 +155,7 @@ Ending conditions:
 def Report_Acknowledgments():
     S = r'''
 \section*{ACKNOWLEDGMENTS}
- Arya Farahi wants to thank Andrew Benson for his helpful comment on the code. Arya Farahi wants to thank ... for helping to prepare the tutorial. Also he wants to thank ... for his helpful discussions and ...
+ Arya Farahi wants to thank Andrew Benson for his helpful comments on the code. Arya Farahi wants to thank ... for helping to prepare the tutorial. Also he wants to thank ... for his helpful discussions and ...
 '''
     return S
 

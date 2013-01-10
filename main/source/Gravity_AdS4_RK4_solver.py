@@ -5,7 +5,7 @@ from scipy.special                import *
 from matplotlib.pyplot            import *
 from Gravity_AdS4_RH_Construction import *
 from Gravity_Utilities            import read_data_float
-from Gravity_Output_Construction  import Output_Plot_Construction, Output_Data_Construction
+from Gravity_Output_Construction  import Output_Plot_Construction, Output_Data_Construction, Power_Spectrum_Data_Construction
 
 #Initianlization
 #Constants:
@@ -101,7 +101,6 @@ def Horizon_con(A):
   
 #RK4 Solver
 def RK4_solver(Gravity_object):
-
     #Grid size
     Grid_size  = Gravity_object.Grid_size
     #Number of node for data saving
@@ -111,16 +110,24 @@ def RK4_solver(Gravity_object):
     dx   = x[1]-x[0]
     i    = 0
 
-    #Writting data
-    f1 = open("saved_data/"+Gravity_object.output.Data_file_name, "w")
-    #column names
-    f1.write("#  time               r              phi             Phi             Pi            delta              A            Ricci\n")
-    f1.close()
+    if Gravity_object.output.Output_status:
+       #Writting data
+       f1 = open("Output/saved_data/"+Gravity_object.output.Data_file_name, "w")
+       #column names
+       f1.write("#  time               r              phi             Phi             Pi            delta              A            Ricci\n")
+       f1.close()
+
+    if Gravity_object.output.Power_Spectrum_status:
+       #Writting data
+       f1 = open("Output/Power_Spectrum_data/"+Gravity_object.output.Power_Spectrum_file_name, "w")
+       #column names
+       f1.write("#  time                     r                       Ricci\n")
+       f1.close()
 
     #Apply Initial condition
-
     delta   = Delta_Solver(x,Gravity_object.field.Phi,Gravity_object.field.Pi)
     A       = A_Solver(x,Gravity_object.field.Phi,Gravity_object.field.Pi,Gravity_object.field.phi)
+    Gravity_object.field.Ricci_Scalar = Ricci_cal(x,Gravity_object.field.Phi,Gravity_object.field.Pi,Gravity_object.field.phi,delta,A)
 
     #Plot initial condition
 #    plot(x,A)
@@ -136,9 +143,11 @@ def RK4_solver(Gravity_object):
     phi_new = zeros(len(x))
     while(True):
 
-       if (i%Gravity_object.output.Frame_time_step==0):
+       if (Gravity_object.output.Power_Spectrum_status):
+          Power_Spectrum_Data_Construction(Gravity_object)
+
+       if (Gravity_object.output.Output_status and i%Gravity_object.output.Frame_time_step==0):
           Output_Plot_Construction(Gravity_object,i)
-          Gravity_object.field.Ricci_Scalar = Ricci_cal(x,Gravity_object.field.Phi,Gravity_object.field.Pi,Gravity_object.field.phi,delta,A)
           Output_Data_Construction(Gravity_object,delta,A)
 
        dt_c                     = dt_cal(dt,dx,A,delta)
@@ -146,9 +155,11 @@ def RK4_solver(Gravity_object):
        delta                    = Delta_Solver(x,Phi_new,Pi_new)
        A                        = A_Solver(x,Phi_new,Pi_new,phi_new)
 
-       Gravity_object.field.Phi   = Phi_new
-       Gravity_object.field.Pi    = Pi_new
-       Gravity_object.field.phi   = phi_new
+       Gravity_object.field.Phi = Phi_new
+       Gravity_object.field.Pi  = Pi_new
+       Gravity_object.field.phi = phi_new
+
+       Gravity_object.field.Ricci_Scalar = Ricci_cal(x,Gravity_object.field.Phi,Gravity_object.field.Pi,Gravity_object.field.phi,delta,A)
 
        Gravity_object.field.time += dt
 

@@ -34,11 +34,11 @@ class Gravity_obj:
          self.A_min                  = read_data_float(tag_name = 'A_min',file_name = 'parameters/parameters.xml')
 
          #Initial Condition Setup
-         if (Initial_Condition_type != Initial_Condition_Input_File)
+         if (self.Initial_Condition_type != Initial_Condition_Input_File):
             self.field.r = linspace(0.0,pi/2.0,self.Grid_size+1)
             (self.field.phi , self.field.Phi , self.field.Pi) = self.Initial_Condition_type(self.field.r)
          else:
-            (self.field.r , self.field.phi , self.field.Phi , self.field.Pi) = self.Initial_Condition_type(self.field.r)
+            (self.field.r , self.field.phi , self.field.Phi , self.field.Pi) = self.Initial_Condition_type()
 
          print "The Gravity Object is initialized susseccfully."
 

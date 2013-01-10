@@ -1,6 +1,6 @@
 from numpy             import loadtxt
 from scipy.special     import *
-from Gravity_Utilities import read_data_float, read_data_int
+from Gravity_Utilities import read_data_float, read_data_int, read_data_string
 
 #Gaussian Initial Condition
 def Initial_Condition_Gaussian(x):
@@ -39,14 +39,9 @@ def Initial_Condition_Eigenfunction_modes_non_normalized(x):
 
 #Input File Initial Condition
 def Initial_Condition_Input_File():
-
-    Phi  = zeros(len(x))
-    Pi   = zeros(len(x))
-    phi  = zeros(len(x))  
-
-    name = read_data_strin(tag_name = 'File_name' , file_name = 'parameters/Initial_Condition/Input_File.xml')
-    file_address = 'parameters/Initial_Condition/Input_file/' + name
+    #Bayad input time ezafe shavad !!! NOTICE
+    name = read_data_string(tag_name = 'File_name' , file_name = 'parameters/Initial_Condition/Input_File.xml')
+    file_address = 'parameters/Initial_Condition/Input_File/' + name
     (r , phi , Phi , Pi , Ricci) = loadtxt(file_address,dtype='float',comments='#',unpack=True)
-
     print "Assigned Initial Condition is: Input File"
     return (r , phi , Phi , Pi)
