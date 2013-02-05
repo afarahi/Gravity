@@ -141,6 +141,7 @@ def RK4_solver(Gravity_object):
     Phi_new = zeros(len(x))
     Pi_new  = zeros(len(x))
     phi_new = zeros(len(x))
+
     while(True):
 
        if (Gravity_object.output.Power_Spectrum_status):
@@ -177,9 +178,12 @@ def RK4_solver(Gravity_object):
        #Ending Loop
        if Horizon_con(A):
           Gravity_object.field.Horizon      = True
+          for j in range(len(x)):
+              if (A[j] <= A_horizon):
+                 Gravity_object.field.Horizon_r = x[j]                   
           break
 
-       i      += 1
+       i += 1
 
        if(i == Gravity_object.Max_interation):
           break

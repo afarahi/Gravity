@@ -13,3 +13,4 @@ class Field_parameters:
          self.Horizon      = False
          self.Horizon_r    = []
          
+         self.Power_Spec_n = []

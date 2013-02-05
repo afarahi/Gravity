@@ -10,11 +10,11 @@
     <Output_Setup>
       <Frame_format>png</Frame_format>
       <Pi_Field>True</Pi_Field>
-        <Pi_Field_max>15</Pi_Field_max>
+        <Pi_Field_max>20</Pi_Field_max>
       <Phi_Field>True</Phi_Field>
-        <Phi_Field_max>15</Phi_Field_max>
+        <Phi_Field_max>10</Phi_Field_max>
       <phi_Field>True</phi_Field>
-        <phi_Field_max>15</phi_Field_max>
+        <phi_Field_max>10</phi_Field_max>
       <Data_file_name>data.txt</Data_file_name>
     </Output_Setup>
   </Output>
@@ -23,7 +23,8 @@
     <Number_of_data_point>
       <Power_Spectrum_data_size>10</Power_Spectrum_data_size>
     </Number_of_data_point>
-      <Power_Spectrum_file_name>data.txt</Power_Spectrum_file_name>
+      <Power_Spectrum_file_name>data_0.txt</Power_Spectrum_file_name>
+      <Power_Spectrum_setting_number>50</Power_Spectrum_setting_number>
   </Power_Spectrum>
   <Report>
     <Report_Status>True</Report_Status>  

@@ -20,19 +20,19 @@ def Gravity_Solver():
 def main_tasks():
 
     Gravity_object = Gravity_obj()    
-    Solver         = Gravity_Solver() 
-    Solver(Gravity_object)
+#    Solver         = Gravity_Solver() 
+#    Solver(Gravity_object)
 
-    if Gravity_object.field.Horizon :
-       print "Horizon time is : ", Gravity_object.field.time
-    else:
-       print "Horizon is not formed ...! (You may want to increase i_max)"
+#    if Gravity_object.field.Horizon :
+#       print "Horizon time is : ", Gravity_object.field.time
+#    else:
+#       print "Horizon is not formed ...! (You may want to increase i_max)"
 
     if Gravity_object.output.Power_Spectrum_status:
        Power_Spectrum_Plot_Construction(Gravity_obj,file_loc_save="Output/Power_Spectrum_data/",file_loc_load="Output/Power_Spectrum_data/")
 
-    if Gravity_object.output.Report_status:
-       Creat_Report(Gravity_object)
+#    if Gravity_object.output.Report_status:
+#       Creat_Report(Gravity_object)
 
     #figure(1)
     #plot(Gravity_object.field.r,Gravity_object.field.Pi)

@@ -50,7 +50,7 @@ def Output_Data_Construction(Gravity_object,delta,A,file_loc = "Output/saved_dat
     f1.close()
 
 def Power_Spectrum_Data_Construction(Gravity_object,file_loc = "Output/Power_Spectrum_data/"):
-    f1 = open(file_loc+Gravity_object.output.Data_file_name, "a")
+    f1 = open(file_loc+Gravity_object.output.Power_Spectrum_file_name, "a")
     Grid_size   = Gravity_object.Grid_size
     n_data_size = Gravity_object.output.Power_Spectrum_points
     n_co        = int(Grid_size/(n_data_size+1)) 

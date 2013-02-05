@@ -24,4 +24,6 @@ class Output_parameters:
          #Power Spectrum
          self.Power_Spectrum_points = read_data_int(tag_name = 'Power_Spectrum_data_size',file_name = 'parameters/output.xml')
          self.Power_Spectrum_file_name = read_data_string(tag_name = 'Power_Spectrum_file_name',file_name = 'parameters/output.xml')
+         self.Power_Spectrum_Setting_number = read_data_int(tag_name = 'Power_Spectrum_setting_number',file_name = 'parameters/output.xml')
+                
          
