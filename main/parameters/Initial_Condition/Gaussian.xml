@@ -1,8 +1,0 @@
-<data>
-  <Initial_Condition>
-    <Initial_Condition_Method>Gaussian</Initial_Condition_Method>
-    <sigma>0.25</sigma>
-    <epsilon>0.5</epsilon>
-  </Initial_Condition>
-</data>
-
