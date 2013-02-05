@@ -1,8 +1,0 @@
-<data>
-  <Initial_Condition>
-    <Initial_Condition_Method>Eigenfunction_modes_non_normalized</Initial_Condition_Method>
-    <number_of_modes>1</number_of_modes>
-    <non_normalized_modes_amplitude>0.2</non_normalized_modes_amplitude>
-  </Initial_Condition>
-</data>
-
