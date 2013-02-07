@@ -1,3 +1,5 @@
+from numpy import loadtxt
+
 def Report_File(Gravity_object):
     import os
     import subprocess
@@ -84,27 +86,27 @@ def Report_Reuslts(Gravity_object):
 
     S = r'''
 \section{Results}
-\subsection{Plots}
+\subsection{Final Plots}
 
 Graphs \ref{fig:R-Pi}, \ref{fig:R-phi}, and \ref{fig:R-Phi} show results of $\Pi$, $\phi$, and $\Phi$ vs. r, respectively, at finalt time, t =  ''' + str(Gravity_object.field.time) + r'''.
 
 \begin{figure}[hbt]
  \centering
- \includegraphics[width=12cm]{PivrR.pdf}
+ \includegraphics[width=12cm]{./Report/PivrR.pdf}
  \caption{Plot of $\Pi$ vs. r at final time.}
  \label{fig:R-Pi}
 \end{figure}
 
 \begin{figure}
  \centering
- \includegraphics[width=12cm]{phivrR.pdf}
+ \includegraphics[width=12cm]{./Report/phivrR.pdf}
  \caption{Plot of $\phi$ vs. r at final time.}
  \label{fig:R-phi}
 \end{figure}
 
 \begin{figure}
  \centering
- \includegraphics[width=12cm]{PhivrR.pdf}
+ \includegraphics[width=12cm]{./Report/PhivrR.pdf}
  \caption{Plot of $\Phi$ vs. r at final time.}
  \label{fig:R-Phi} 
 \end{figure}
@@ -115,6 +117,29 @@ One of the aim of \grv\ is to study the black hole fomration of different fields
 For black hole formation the code checks the value of $A$ at each point, at each time. Theoretically once $A = 0$ it means that the black hole fomed so the condition $A_{\min}$ is defined to check whether the black hole is formed or not. One should choose something close to zero, but independently, by changing the $A_{\min}$ need to make sure that the condition do not affect the result. In this run $A_{\min} = ''' + str(Gravity_object.A_min) + r'''$ . \\
 
 '''  + S1
+ 
+    if Gravity_object.output.Power_Spectrum_status :
+       (t, r, x) = loadtxt("./Output/Power_Spectrum_data/"+Gravity_object.output.Power_Spectrum_file_name, unpack=True, comments = '#')
+       S += r'''\subsection{Power Spectrum}
+    Assuming the evolution of each point in space following the power low in Fourier space, one can compute the power of power spectrum for large frequencies with finding the best fit line in log-log plot. Here it is assumed assume,
+
+    \begin{equation}
+       r(k) \propto k^n
+    \end{equation}
+
+    In this run the power, $n$ , is computed for ''' + str(Gravity_object.output.Power_Spectrum_points) + r''' points.
+
+    \begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    r      & n\\ \hline '''
+       for i in range(Gravity_object.output.Power_Spectrum_points):
+           S += str(r[i]) +  r'''&''' + str(Gravity_object.field.Power_Spec_n[i])  + r'''\\ \hline 
+'''
+       S += r'''
+    \end{tabular}
+    \end{center}
+'''
     return S
 
 

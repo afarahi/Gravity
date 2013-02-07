@@ -1,3 +1,6 @@
+import subprocess
+import os
+import shlex
 from matplotlib.pyplot            import *
 from matplotlib                   import rc
 from Gravity_tex_Construction     import Report_File
@@ -50,4 +53,17 @@ def Creat_Report(Gravity_object):
     Reprt_Data_Construction(Gravity_object)
     print "Creating tex file ..."
     Report_File(Gravity_object)
+
+    proc=subprocess.Popen(shlex.split('pdflatex Report/report.tex'))
+    proc.communicate()
+    proc=subprocess.Popen(shlex.split('pdflatex Report/report.tex'))
+    proc.communicate()
+    proc=subprocess.Popen(shlex.split('cp report.pdf Report'))
+    proc.communicate()
+    os.unlink('report.aux')
+    os.unlink('report.log')
+    os.unlink('report.out')
+    os.unlink('report.pdf')
+    
     print "Report is created successfully."
+    
