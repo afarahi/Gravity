@@ -2,15 +2,12 @@ from numpy                    import *
 from scipy                    import *
 from scipy.special            import *
 from matplotlib.pyplot        import *
+from numpy.fft                import *
 from Gamma_mod                import Gamma_coef,Alpha_coef,n_coef
 #from matplotlib                   import rc
 
 #rc('text',usetex=False)
 #rc('font',family='serif')
-
-#Min_Gamma = 1.0
-#T_max     = 10.0
-#mesh_size = 10000
 
 #Right handside constractor of Phi
 def RH_cons_Phi(Gamma_coe,alpha,Phi,n,nt,index):
@@ -82,6 +79,12 @@ Phi = RK4_solver(Phi,Gamma,Alpha,t,n,nt)
 
 #print Phi[1,1,:]
 
+
+########################################
+######### CREATING OUTPUT ##############
+########################################
+
+#Time Evolution
 for i in range(n):
    for j in range(n):
       istr = str(i+1)
@@ -98,14 +101,95 @@ for i in range(n):
       plot(t,Phi[i,j,:].real)
 #      xlabel(r'$r$',fontsize = 16)
 #      ylabel(r'$\phi$',fontsize = 16)
-      fname = "./saved_data/plot/Phi_"+istr+"_"+jstr+"_real.png"
+      fname = "./saved_data/plot/Time_Evolution/Phi_"+istr+"_"+jstr+"_real.png"
       print 'Saving frame', fname
       savefig(fname)
       clf()
       plot(t,Phi[i,j,:].imag)
 #      xlabel(r'$r$',fontsize = 16)
 #      ylabel(r'$\phi$',fontsize = 16)
-      fname = "./saved_data/plot/Phi_"+istr+"_"+jstr+"_imag.png"
+      fname = "./saved_data/plot/Time_Evolution/Phi_"+istr+"_"+jstr+"_imag.png"
       print 'Saving frame', fname
       savefig(fname)
+
+
+#Max & Min Evolution
+for i in range(len(Phi[:,0,0])):
+   for j in range(len(Phi[0,:,0])):
+      istr = str(i+1)
+      jstr = str(j+1)
+      ExpPhiReal = []
+      TimeReal   = []
+      ExpPhiImag = []
+      TimeImag   = []
+      if ( Phi[i,j,0].real < Phi[i,j,1].real):
+         Breal = True
+      else:
+         Breal = False
+      if ( Phi[i,j,0].imag < Phi[i,j,1].imag):
+         Bimag = True
+      else:
+         Bimag = False
+      for k in range(1,len(Phi[0,0,:])):
+         if (Breal):
+            if ( Phi[i,j,k-1].real <= Phi[i,j,k].real):
+                ExpPhiReal.append(abs(Phi[i,j,k].real))
+                TimeReal.append(t[k])
+                Breal = False
+         else:
+            if ( Phi[i,j,k-1].real >= Phi[i,j,k].real):
+                ExpPhiReal.append(abs(Phi[i,j,k].real))
+                TimeReal.append(t[k])
+                Breal = True
+         if (Bimag):
+            if ( Phi[i,j,k-1].imag <= Phi[i,j,k].imag):
+                ExpPhiImag.append(abs(Phi[i,j,k].imag))
+                TimeImag.append(t[k])
+                Bimag = False
+         else:
+            if ( Phi[i,j,k-1].imag >= Phi[i,j,k].imag):
+                ExpPhiImag.append(abs(Phi[i,j,k].imag))
+                TimeImag.append(t[k])
+                Bimag = True
+      ExpPhiReal.pop(0)
+      TimeReal.pop(0)
+      ExpPhiImag.pop(0)
+      TimeImag.pop(0)
+
+      clf()
+      print 'Saving frame', fname
+      plot(TimeReal,ExpPhiReal)
+      fname = "./saved_data/plot/Max_Evolution/Phi_"+istr+"_"+jstr+"_real.png"
+      savefig(fname)
+
+      clf()
+      print 'Saving frame', fname
+      plot(TimeImag,ExpPhiImag)
+      fname = "./saved_data/plot/Max_Evolution/Phi_"+istr+"_"+jstr+"_imag.png"
+      savefig(fname)
+
+
+#Power Spectrum Evolution
+for i in range(len(Phi[:,0,0])):
+   for j in range(len(Phi[0,:,0])):
+      istr = str(i+1)
+      jstr = str(j+1)
+
+      w     = rfft(Phi[i,j,:].real)
+      ps    = abs(w)**2
+      omega = linspace(0.0,2.0*pi*len(ps)/t[len(t)-1],len(ps))
+      clf()
+      print 'Saving frame', fname
+      loglog(omega[1:len(ps)-1],ps[1:len(ps)-1])
+      fname = "./saved_data/plot/Power_Spectrum/Phi_"+istr+"_"+jstr+"_real.png"
+      savefig(fname) 
+
+      w     = rfft(Phi[i,j,:].imag)
+      ps    = abs(w)**2
+      omega = linspace(0.0,2.0*pi*len(ps)/t[len(t)-1],len(ps))
+      clf()
+      print 'Saving frame', fname
+      loglog(omega[1:len(ps)-1],ps[1:len(ps)-1])
+      fname = "./saved_data/plot/Power_Spectrum/Phi_"+istr+"_"+jstr+"_imag.png"
+      savefig(fname) 
 
