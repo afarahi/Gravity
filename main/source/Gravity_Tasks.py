@@ -1,9 +1,10 @@
-from matplotlib.pyplot      import *
-from Solver_definition      import *
-from Gravity_Power_Spectrum import Power_Spectrum_Plot_Construction
-from Gravity_Parameters     import Gravity_obj
-from Gravity_Utilities      import read_data_string
-from Gravity_Report         import Creat_Report
+from Gravity_Parameters                import Gravity_obj
+from matplotlib.pyplot                 import *
+from Solver_definition                 import *
+from Gravity_Utilities                 import read_data_string
+from Gravity_Report                    import Creat_Report
+from Gravity_Power_Spectrum            import Power_Spectrum_Plot_Construction
+from Gravity_Power_Spectrum_Real_Space import Real_Space_Power_Spectrum_Plot_Construction
 
 def Gravity_Solver():
     #Solver Type
@@ -27,6 +28,9 @@ def main_tasks():
        print "Horizon time is : ", Gravity_object.field.time
     else:
        print "Horizon is not formed ...! (You may want to increase i_max)"
+
+    if Gravity_object.output.Real_Space_Power_Spectrum_status:
+       Real_Space_Power_Spectrum_Plot_Construction(Gravity_obj,file_loc_save="Output/Real_Space_Power_Spectrum/")
 
     if Gravity_object.output.Power_Spectrum_status:
        Power_Spectrum_Plot_Construction(Gravity_obj,file_loc_save="Output/Power_Spectrum_data/",file_loc_load="Output/Power_Spectrum_data/")

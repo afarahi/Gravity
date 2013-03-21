@@ -1,6 +1,6 @@
 <data>
   <Output>
-    <Output_Status>True</Output_Status>  
+    <Output_Status>False</Output_Status>  
     <Frame_time_step>
       <n_frame>50</n_frame>
     </Frame_time_step>
@@ -19,13 +19,17 @@
     </Output_Setup>
   </Output>
   <Power_Spectrum>
-    <Power_Spectrum_Status>True</Power_Spectrum_Status>
+    <Power_Spectrum_Status>False</Power_Spectrum_Status>
     <Number_of_data_point>
-      <Power_Spectrum_data_size>12</Power_Spectrum_data_size>
+      <Power_Spectrum_data_size>20</Power_Spectrum_data_size>
     </Number_of_data_point>
-      <Power_Spectrum_file_name>data_0.txt</Power_Spectrum_file_name>
+      <Power_Spectrum_file_name>data.txt</Power_Spectrum_file_name>
       <Power_Spectrum_setting_number>50</Power_Spectrum_setting_number>
   </Power_Spectrum>
+  <Real_Space_Power_Spectrum>
+    <Real_Space_Power_Spectrum_Status>True</Real_Space_Power_Spectrum_Status>
+      <Real_Space_Power_Spectrum_modes_number>20</Real_Space_Power_Spectrum_modes_number>
+  </Real_Space_Power_Spectrum>
   <Report>
     <Report_Status>True</Report_Status>  
   </Report>

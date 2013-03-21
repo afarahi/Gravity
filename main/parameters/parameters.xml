@@ -8,13 +8,13 @@
     <Potential>Massive_Scalar</Potential>
   </Field_properties>
   <Initial_Condition>
-    <Initial_Condition_Method>Gaussian</Initial_Condition_Method>
+    <Initial_Condition_Method>Eigenfunction_modes_non_normalized</Initial_Condition_Method>
   </Initial_Condition>
-  <Grid_size>2000</Grid_size>
+  <Grid_size>300</Grid_size>
   <Horizon_condition>
-    <A_min>0.01</A_min>
+    <A_min>0.1</A_min>
   </Horizon_condition>
   <Max_number_of_loops>
-    <i_max>50000</i_max>
+    <i_max>1200</i_max>
   </Max_number_of_loops>
 </data>
