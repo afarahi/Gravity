@@ -42,7 +42,7 @@ NOTHING FOR NOW
 \section{Results}
 \subsection{Final Plots}
 
-Graphs \ref{fig:R-Pi}, \ref{fig:R-phi}, and \ref{fig:R-Phi} show results of $\Pi$, $\phi$, and $\Phi$ vs. r, respectively, at finalt time, t =  1.57079632679.
+Graphs \ref{fig:R-Pi}, \ref{fig:R-phi}, and \ref{fig:R-Phi} show results of $\Pi$, $\phi$, and $\Phi$ vs. r, respectively, at finalt time, t =  0.00785398163397.
 
 \begin{figure}[hbt]
  \centering
@@ -67,10 +67,10 @@ Graphs \ref{fig:R-Pi}, \ref{fig:R-phi}, and \ref{fig:R-Phi} show results of $\Pi
 
 \subsection{Black hole formation}
 
-One of the aim of \grv\ is to study the black hole fomration of different fields in \AdS\ geometry. Once the black hole forms the field stops its evolution. It is suggested that all fields forms a black hole at sometimes during their evolution, and it is the universal feature of all fields in \AdS\ . The time of fomation of black hole depends on the amplititude and shape of initial wave, the geometry of space, potential, and the field choice. Because it is not possible to run the code for ever an end condition implimented in the code to stop the evolution of field after some number of iteration. In this run the number of iteration is defined, $i_{\max}  = 1200$. \\
+One of the aim of \grv\ is to study the black hole fomration of different fields in \AdS\ geometry. Once the black hole forms the field stops its evolution. It is suggested that all fields forms a black hole at sometimes during their evolution, and it is the universal feature of all fields in \AdS\ . The time of fomation of black hole depends on the amplititude and shape of initial wave, the geometry of space, potential, and the field choice. Because it is not possible to run the code for ever an end condition implimented in the code to stop the evolution of field after some number of iteration. In this run the number of iteration is defined, $i_{\max}  = 20$. \\
 For black hole formation the code checks the value of $A$ at each point, at each time. Theoretically once $A = 0$ it means that the black hole fomed so the condition $A_{\min}$ is defined to check whether the black hole is formed or not. One should choose something close to zero, but independently, by changing the $A_{\min}$ need to make sure that the condition do not affect the result. In this run $A_{\min} = 0.1$ . \\
 
- In this run the black hole was not formed and the field stoped its evolution at time, $ t = 1.57079632679$. There maybe two resoan why black hole did not form. First the number of iteration was not enough to get the balck hole so by increasing the nuber of iteration once can go furthur in time and see if the black holes forms. Second errors grow and become dominant so the code failed to predict the behavoiur of field. For solving this problem one may want to increase the grid size, in this run grid size of, $n = 300 $, is used. There is another possibilities to improve the numerical solution, change the solver to something more accurate, in this run solver RK4 is used. 
+ In this run the black hole was not formed and the field stoped its evolution at time, $ t = 0.00785398163397$. There maybe two resoan why black hole did not form. First the number of iteration was not enough to get the balck hole so by increasing the nuber of iteration once can go furthur in time and see if the black holes forms. Second errors grow and become dominant so the code failed to predict the behavoiur of field. For solving this problem one may want to increase the grid size, in this run grid size of, $n = 1000 $, is used. There is another possibilities to improve the numerical solution, change the solver to something more accurate, in this run solver RK4 is used. 
 
 \section{Parameters}
 
@@ -91,13 +91,13 @@ Initial Conditions:
 Numerical method:
 \begin{verbatim}
   Solver = RK4
-  Grid size = 300
+  Grid size = 1000
 \end{verbatim}
 
 Ending conditions:
 \begin{verbatim}
   Horizon condition (A_min) = 0.1
-  Maximum number of iteration = 1200
+  Maximum number of iteration = 20
 \end{verbatim}
 
 
