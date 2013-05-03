@@ -1,7 +1,7 @@
-from scipy                    import *
-from scipy.special            import *
-from Gravity_Dictionary       import *
-from Gravity_Utilities        import read_data_string
+from scipy            import *
+from scipy.special    import *
+from Objects          import Gravity_Dictionary
+from Utilities        import read_data_string
 
 Potential_type_name    = read_data_string(tag_name = 'Potential',file_name = 'parameters/parameters.xml')
 Potential_func         = Gravity_Dictionary["Potential"][Potential_type_name][0]

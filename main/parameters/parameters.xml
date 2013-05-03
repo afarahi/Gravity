@@ -10,7 +10,7 @@
   <Initial_Condition>
     <Initial_Condition_Method>Eigenfunction_modes_non_normalized</Initial_Condition_Method>
   </Initial_Condition>
-  <Grid_size>1000</Grid_size>
+  <Grid_size>100</Grid_size>
   <Horizon_condition>
     <A_min>0.1</A_min>
   </Horizon_condition>

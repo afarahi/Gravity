@@ -1,10 +1,10 @@
-from Gravity_Parameters                import Gravity_obj
-from matplotlib.pyplot                 import *
-from Solver_definition                 import *
-from Gravity_Utilities                 import read_data_string
-from Gravity_Report                    import Creat_Report
-from Gravity_Power_Spectrum            import Power_Spectrum_Plot_Construction
-from Gravity_Power_Spectrum_Real_Space import Real_Space_Power_Spectrum_Plot_Construction
+from Objects            import Gravity_obj
+from Utilities          import read_data_string
+from Report_Generator   import Creat_Report
+from Logo               import *
+from Solvers            import *
+from matplotlib.pyplot  import *
+from Power_Spectrum     import Power_Spectrum_Plot_Construction, Real_Space_Power_Spectrum_Plot_Construction
 
 def Gravity_Solver():
     #Solver Type
@@ -19,6 +19,10 @@ def Gravity_Solver():
 
 
 def main_tasks():
+   
+    Print_logo()
+
+    print "\n"
 
     Gravity_object = Gravity_obj()    
     Solver         = Gravity_Solver() 
@@ -45,4 +49,4 @@ def main_tasks():
     #plot(Gravity_object.field.r,Gravity_object.field.Phi)
     #show()
 
-
+    Print_ending()

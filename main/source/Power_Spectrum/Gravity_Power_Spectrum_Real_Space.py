@@ -1,9 +1,9 @@
-from Gravity_Utility_Best_Fit_Line import Linear_Fit_Line 
-from Gravity_Parameters            import Gravity_obj
-from numpy                         import linspace, loadtxt, zeros, pi, sin, cos, log, exp, sqrt, tan
-from scipy.special                 import hyp2f1
-from matplotlib.pyplot             import *
-from matplotlib                    import rc
+from Utilities         import Linear_Fit_Line 
+from Objects           import Gravity_obj
+from numpy             import linspace, loadtxt, zeros, pi, sin, cos, log, exp, sqrt, tan
+from scipy.special     import hyp2f1
+from matplotlib.pyplot import *
+from matplotlib        import rc
 
 rc('font',family='serif')
 

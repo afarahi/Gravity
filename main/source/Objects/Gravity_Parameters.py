@@ -1,10 +1,11 @@
-from numpy                        import linspace
+from numpy                        import linspace, pi
+from Utilities                    import read_data_string, read_data_float, read_data_int
 from Gravity_Dictionary           import *
-from Gravity_Output_Properties    import Output_parameters
-from Gravity_Field_Properties     import Field_parameters
-from Gravity_Utilities            import read_data_string, read_data_float, read_data_int
 
 class Gravity_obj:
+
+      from Gravity_Output_Properties    import Output_parameters
+      from Gravity_Field_Properties     import Field_parameters
       
       field  = Field_parameters()
       output = Output_parameters()

@@ -1,5 +1,4 @@
-from Potential_definition         import *
-from Initial_Condition_definition import *
+from Definitions   import *
 
 Gravity_Dictionary = \
 {
